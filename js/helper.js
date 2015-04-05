@@ -64,7 +64,7 @@ The International Name challenge in Lesson 2 where you'll create a function that
 */
 $(document).ready(function() {
   $('button').click(function() {
-    var iName = inName() || function(){};
+    var iName = inName($("#name").text()) || function(){};
     $('#name').html(iName);
   });
 });
@@ -77,8 +77,8 @@ clickLocations = [];
 function logClicks(x,y) {
   clickLocations.push(
     {
-      x: x,
-      y: y
+      "x": x,
+      "y": y
     }
   );
   console.log('x location: ' + x + '; y location: ' + y);
@@ -86,6 +86,7 @@ function logClicks(x,y) {
 
 $(document).click(function(loc) {
   // your code goes here!
+    logClicks(loc.clientX,loc.clientY);
 });
 
 
@@ -161,11 +162,17 @@ map = new google.maps.Map(document.querySelector('#map'), mapOptions);
       title: name
     });
 
+var contentString = name;
+
     // infoWindows are the little helper windows that open when you click
     // or hover over a pin on a map. They usually contain more information
     // about a location.
-    var infoWindow = new google.maps.InfoWindow({
-      content: name
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    google.maps.event.addListener(map, 'click', function() {
+      infowindow.close();
     });
 
     // hmmmm, I wonder what this is about...
@@ -173,7 +180,7 @@ map = new google.maps.Map(document.querySelector('#map'), mapOptions);
       infowindow.open(map,marker);
     });
 
-    // this is where the pin actually gets added to the map.
+     // this is where the pin actually gets added to the map.
     // bounds.extend() takes in a map location object
     bounds.extend(new google.maps.LatLng(lat, lon));
     // fit the map to the new marker

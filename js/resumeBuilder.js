@@ -1,3 +1,4 @@
+//Resume Data in JSON Format -----------------------
 var awesomeThoughts = "Accomplished, results-driven technology management professional with proven record of success in product development and management, business development, and program leadership. Highly adept at directing product planning, design, engineering, and delivery. Special expertise in strategic planning, change management, risk mitigation, and sales. Able to lead complete product life cycles, build and supervise effective teams, and administer budgets. Familiar with venture fund acquisition. International experience in product design management. Experienced at founding and running companies.";
 
 var bio = {
@@ -25,11 +26,25 @@ var work = {
 			"description": "Manage teams that execute business and technical implementation strategies and ensure successful product delivery across multiple platforms using AT&T process guidelines. These responsibilities include developing requirements, managing project scope, schedule, and cost, identifying and mitigating risks across diverse cross-functional teams."
 		},
 		{
-			"employer": "frog design",
+			"employer": "FROG DESIGN",
 			"title": "Executive Director / Client Partner",
-			"location": "San Francisco, California",
+			"location": "Palo Alto, California",
 			"dates": "2003 - 2010",
 			"description": "Oversaw large, complex product development projects for Fortune 100 company clients of $90M consulting company. Clients included Intel, Disney, Microsoft, AT&T, Cisco, and others. Carried out project planning, tracking, budgeting, and product design and delivery management. Supervised project teams of up to 100 at sites worldwide. Built and maintained client relationships at senior executive level. Developed and delivered documentation and presentations."
+		},
+		{
+			"employer": "FROGWERK",
+			"title": "Vice President of Development",
+			"location": "San Francisco, California",
+			"dates": "2000 - 2002",
+			"description": "Directed 10-person team at startup software development company. Led creation of user experience for enterprise software program in conjunction with Frog Design, to track product design process from conceptualization to completion of product development."
+		},
+		{
+			"employer": "SWIFT COMPUTER SOLUTIONS (INTERNET INSIGHTS)",
+			"title": "President/Founder",
+			"location": "San Francisco, California",
+			"dates": "1996 - 2000",
+			"description": "Established and managed company specializing in software development and web strategy design. Hired, and supervised staff of 10 web designers and programmers. Hosted web sites for 250 companies. Carried out strategic planning, marketing, sales, project management, search engine placement, customer relationship management, and more."
 		}
 	]
 }
@@ -37,22 +52,22 @@ var work = {
 var projects = {
 	"projects": [
 		{
-			"title": "craigwilliamsonline.com",
-			"dates": "2010",
-			"description": "Personal site for my resume.",
-			"images": [""]
+			"title": "AT&T Messages",
+			"dates": "2014",
+			"description": "With AT&T Messages, texting isn't just for phones anymore ‐ keep the conversation going on your tablet or computer.",
+			"images": ["images/ATTMessages.png"]
 		},
 		{
 			"title": "Bear Creek Reserve",
 			"dates": "2015",
 			"description": "Bear Creek Reserve; a hidden jewel in the heart of Georgia. Located approximately 20 miles East of Macon in the town of Dry Branch; Totaling 2,400 acres, this wildlife sanctuary has recently been acquired by a father and son hoping to entertain business clients and personal acquaintances with quality outdoor experiences.",
-			"images": [""]
+			"images": ["images/BearCreekWeb1.png", "images/BearCreekWeb2.png", "images/BearCreekWeb3.png"]
 		},
 		{
-			"title": "Trigger & Trebble",
-			"dates": "2014",
-			"description": "Outdoors blog built for a friend.",
-			"images": [""]
+			"title": "craigwilliamsonline.com",
+			"dates": "2010",
+			"description": "Personal site for my resume.",
+			"images": ["images/CWonlineResume.png"]
 		}
 	]
 }
@@ -70,22 +85,30 @@ var education = {
 		{
 			"name": "Denver University",
 			"location": "Denver, Colorado",
-			"degree": "Masters",
-			"major": ["Business Administration"],
+			"degree": "Courses towards Masters",
+			"major": ["Computer Information Systems"],
 			"dates": 1997,
 			"url": "http://www.du.edu"
 		}
 	],
 	"onlineCourses": [
 		{
-			"title": "FrontEnd Web Development",
+			"title": "Intro to HTML and CSS",
 			"school": "Udacity",
 			"dates": 2015,
-			"url": "http://www.udacity.com"
+			"url": "http://www.udacity.com/course/viewer#!/c-ud304-nd/"
+		},
+		{
+			"title": "How to Use Git and GitHub",
+			"school": "Udacity",
+			"dates": 2015,
+			"url": "http://www.udacity.com/course/viewer#!/c-ud775/"
 		}
 	]
 }
+//------End of the Resume Data in JSON Format ----------
 
+//Preparing the HTML for the header using helper.js-----------------
 var formattedheaderName = HTMLheaderName.replace("%data%", bio.name);
 var formattedheaderRole = HTMLheaderRole.replace("%data%", bio.role);
 var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
@@ -96,35 +119,40 @@ var formattedBioLocation = HTMLlocation.replace("%data%", bio.contacts.location)
 var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 var formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
 
-$("#header").prepend(formattedheaderRole);
-$("#header").prepend(formattedheaderName);
+//Resume section display functions------------------------
+bio.display = function() {
+	$("#header").prepend(formattedheaderRole);
+	$("#header").prepend(formattedheaderName);
 
-$("#topContacts").append(formattedMobile)
-	.append(formattedEmail)
-	.append(formattedGithub)
-	.append(formattedTwitter)
-	.append(formattedBioLocation);
+	$("#topContacts").append(formattedMobile)
+		.append(formattedEmail)
+		.append(formattedGithub)
+		.append(formattedTwitter)
+		.append(formattedBioLocation);
 
-$("#footerContacts").append(formattedMobile)
-	.append(formattedEmail)
-	.append(formattedGithub)
-	.append(formattedTwitter)
-	.append(formattedBioLocation);
+	$("#footerContacts").append(formattedMobile)
+		.append(formattedEmail)
+		.append(formattedGithub)
+		.append(formattedTwitter)
+		.append(formattedBioLocation);
 
 
-$("#header").append(formattedBioPic);
-$("#header").append(formattedMessage);
+	$("#header").append(formattedBioPic);
+	$("#header").append(formattedMessage);
 
-if (bio.skills.length > 0) {
+	if (bio.skills.length > 0) {
 		$('#header').append(HTMLskillsStart);
 		for(skill in bio.skills) {
 			var formattedSkills = HTMLskills.replace("%data%",bio.skills[skill]);
 			$("#skills").append(formattedSkills);
+		}
+	}
 };
-};
+bio.display();
 
-for (job in work.jobs){
-	$("#workExperience").append(HTMLworkStart);
+work.display = function() {
+	for (job in work.jobs){
+		$("#workExperience").append(HTMLworkStart);
 		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
 		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
 		var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
@@ -134,7 +162,9 @@ for (job in work.jobs){
 		var formattedEmployerTitle = formattedEmployer + formattedTitle + formattedDates + formattedLocation + formattedDescription;
 
 		$(".work-entry:last").append(formattedEmployerTitle);
+	}
 };
+work.display();
 
 projects.display = function() {
 	for (project in projects.projects) {
@@ -190,13 +220,17 @@ education.display = function() {
 };
 education.display();
 
-	function inName(name) {
-		console.log(name);
-		name = name.trim().split(" ");
-		name[1] = name[1].toUpperCase();
-		name[0] = name[0].slice(0,1).toUpperCase() + names[0].slice(1).toLowerCase();
-		return name[0] +" "+name[1];
-};
-
+//Name Internationalization --------------------
+//Had to modify the helper function in helper.js to make this work
+function inName(oldName)
+{
+    var finalName = oldName;
+    finalName = finalName[0].toUpperCase() + finalName.slice(1).toLowerCase();
+    var pos = finalName.search(" ");
+    finalName = finalName.slice(0,pos) + " " + finalName.slice(pos+1).toUpperCase();
+    return finalName;
+}
+//Name internationalize button at the bottom of the page
 $('#main').append(internationalizeButton);
+// Google Map placed in the map div
 $("#mapDiv").append(googleMap);
