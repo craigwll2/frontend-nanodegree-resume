@@ -42,7 +42,7 @@ var work = {
 		{
 			"employer": "SWIFT COMPUTER SOLUTIONS (INTERNET INSIGHTS)",
 			"title": "President/Founder",
-			"location": "San Francisco, California",
+			"location": "Northglenn, Colorado",
 			"dates": "1996 - 2000",
 			"description": "Established and managed company specializing in software development and web strategy design. Hired, and supervised staff of 10 web designers and programmers. Hosted web sites for 250 companies. Carried out strategic planning, marketing, sales, project management, search engine placement, customer relationship management, and more."
 		}
@@ -190,17 +190,16 @@ education.display = function() {
 	for (school in education.schools) {
 		$("#education").append(HTMLschoolStart);
 		var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
-		$(".education-entry:last").append(formattedSchoolName);
+		var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+		$(".education-entry:last").append(formattedSchoolName + formattedSchoolDegree);
 		var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
 		$(".education-entry:last").append(formattedSchoolLocation);
-		var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-		$(".education-entry:last").append(formattedSchoolDegree);
+		var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+		$(".education-entry:last").append(formattedSchoolDates);
 		if (education.schools[school].major.length > 0) {
 			for (degree in education.schools[school].major) {
 				var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major[degree]);
 				$(".education-entry:last").append(formattedSchoolMajor);
-		var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
-		$(".education-entry:last").append(formattedSchoolDates);
 			}
 		}
 	}
@@ -208,9 +207,8 @@ education.display = function() {
 		$(".education-entry:last").append(HTMLonlineClasses);
 		for (courses in education.onlineCourses) {
 			var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[courses].title);
-			$(".education-entry:last").append(formattedOnlineTitle);
 			var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[courses].school);
-			$(".education-entry:last").append(formattedOnlineSchool);
+			$(".education-entry:last").append(formattedOnlineTitle + formattedOnlineSchool);
 			var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[courses].dates);
 			$(".education-entry:last").append(formattedOnlineDates);
 			var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[courses].url);
