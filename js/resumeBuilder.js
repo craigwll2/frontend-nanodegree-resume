@@ -228,7 +228,8 @@ function inName(oldName)
     finalName = finalName.slice(0,pos) + " " + finalName.slice(pos+1).toUpperCase();
     return finalName;
 }
-//Name internationalize button at the bottom of the page
+//Name internationalize button at the bottom of the page changes the name in
+//the header
 $('#main').append(internationalizeButton);
 // Google Map placed in the map div
 $("#mapDiv").append(googleMap);
