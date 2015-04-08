@@ -1,0 +1,8 @@
+http://validator.w3.org/#validate_by_input
+http://api.jquery.com/category/events/event-object/
+http://jquery.com/
+http://helephant.com/2008/08/19/functions-are-first-class-objects-in-javascript/
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON
+http://jsonlint.com/
+https://developers.google.com/maps/documentation/javascript/
